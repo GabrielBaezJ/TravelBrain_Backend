@@ -1,15 +1,10 @@
-// Load environment variables (solo en desarrollo)
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
-
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
 // Initialize Express app
 const app = express();
-const PORT = process.env.PORT || 3004;
+const PORT = 3004;
 
 // Configure mongoose
 mongoose.set('strictQuery', false);
@@ -19,8 +14,8 @@ app.use(cors({
   origin: [
     'http://localhost:5173',
     'http://localhost:3000',
-    process.env.FRONTEND_URL
-  ].filter(Boolean),
+    'https://your-frontend-url.com'
+  ],
   credentials: true
 }));
 
@@ -72,12 +67,12 @@ app.use((err, req, res, next) => {
   console.error('Error:', err);
   res.status(err.status || 500).json({
     error: err.message || 'Internal Server Error',
-    ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
+    stack: err.stack
   });
 });
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect('mongodb+srv://username:password@cluster.mongodb.net/travelbrain?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
