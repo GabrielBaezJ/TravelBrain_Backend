@@ -72,10 +72,7 @@ app.use((err, req, res, next) => {
 });
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://SrJCBM:bdd2025@cluster0.tjvfmrk.mongodb.net/', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect('mongodb+srv://SrJCBM:bdd2025@cluster0.tjvfmrk.mongodb.net/')
 .then(() => {
   console.log('✅ Connected to MongoDB successfully');
   
