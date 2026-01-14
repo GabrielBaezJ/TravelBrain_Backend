@@ -72,7 +72,7 @@ app.use((err, req, res, next) => {
 });
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://username:password@cluster.mongodb.net/travelbrain?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://SrJCBM:bdd2025@cluster0.tjvfmrk.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
